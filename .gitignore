@@ -1,1 +1,11 @@
-/QL_Nhom_Java/build/
+/QL_Nhom_Java/
++ build/
++ dist/
++ nbproject/
+  build-impl.xml
+  + private/
+  + project.properties
+  + project.xml
++ src/
++ test/
++ build.xml
