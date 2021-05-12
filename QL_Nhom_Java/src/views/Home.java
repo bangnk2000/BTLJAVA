@@ -6,31 +6,33 @@
 package views;
 
 import Model.UserModel;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.security.AccessControlContext;
+import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 /**
  *
- * @author KeepToo
+ * @author BN
  */
 public class Home extends javax.swing.JFrame {
-
-     private int xMouse, yMouse;
     /**
      * Creates new form Home
      */
+    private int xMouse,yMouse;
+    public UserModel user;
+    private int indexTab = 0;
+    Home thisForm;
+    studentManage tab1;
     
-    CardLayout cardLayout;
     public Home() {
         initComponents();
+        thisForm = this;
     }
 
     Home(UserModel user) {
         initComponents();
+        thisForm = this;
+        user = new UserModel(user);
     }
 
     /**
@@ -42,80 +44,28 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        trangtri1 = new javax.swing.JPanel();
         jPanelHeader = new javax.swing.JPanel();
         jPanelControl = new javax.swing.JPanel();
         btn_close = new javax.swing.JLabel();
         btn_minimize = new javax.swing.JLabel();
         trangchi2 = new javax.swing.JPanel();
-        jSplitPane2 = new javax.swing.JSplitPane();
-        jPanelMenu = new javax.swing.JPanel();
-        btnTrangChu = new javax.swing.JPanel();
-        IndicatorTC = new javax.swing.JPanel();
-        trangChuLabel = new javax.swing.JLabel();
-        btnQLSV = new javax.swing.JPanel();
-        IndicatorQLSV = new javax.swing.JPanel();
-        QLSVLabel = new javax.swing.JLabel();
-        btnQLN = new javax.swing.JPanel();
-        IndicatorQLN = new javax.swing.JPanel();
-        QLNLabel = new javax.swing.JLabel();
-        btnQLTD = new javax.swing.JPanel();
-        IndicatorQLTD = new javax.swing.JPanel();
-        QLTDLabel = new javax.swing.JLabel();
-        btnQLGD = new javax.swing.JPanel();
-        IndicatorQLGD = new javax.swing.JPanel();
-        QLGDLabel = new javax.swing.JLabel();
-        btnQLDT = new javax.swing.JPanel();
-        IndicatorQLDT = new javax.swing.JPanel();
-        QLDTLabel = new javax.swing.JLabel();
-        btnQLTK = new javax.swing.JPanel();
-        IndicatorQLTK = new javax.swing.JPanel();
-        QLTKLabel = new javax.swing.JLabel();
-        btnBaoCao = new javax.swing.JPanel();
-        IndicatorBC = new javax.swing.JPanel();
-        baoCaoLabel = new javax.swing.JLabel();
+        menuPanel = new javax.swing.JPanel();
         avatar = new javax.swing.JLabel();
-        panelCards = new javax.swing.JPanel();
-        pnlTrangChu = new javax.swing.JPanel();
-        pnlQLSV = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jTextTimKiem = new javax.swing.JTextField();
-        jComboBoxTimKiem = new javax.swing.JComboBox<>();
-        btnTimKiem = new javax.swing.JButton();
-        sinhVienLabel = new javax.swing.JLabel();
-        tenSinhVienLabel = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        pnlQLN = new javax.swing.JPanel();
-        pnlQLTD = new javax.swing.JPanel();
-        pnlQLGD = new javax.swing.JPanel();
-        pnlQLDT = new javax.swing.JPanel();
-        pnlQLTK = new javax.swing.JPanel();
-        pnlBC = new javax.swing.JPanel();
+        btnTrangChu = new javax.swing.JButton();
+        btnQLSV = new javax.swing.JButton();
+        btnQLN = new javax.swing.JButton();
+        btnQLDT = new javax.swing.JButton();
+        btnQLTD = new javax.swing.JButton();
+        btnQLGD = new javax.swing.JButton();
+        bvtnTK = new javax.swing.JButton();
+        btnBaoCao = new javax.swing.JButton();
+        MainPanel = new javax.swing.JPanel();
+        jToolBar1 = new javax.swing.JToolBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-        setLocationByPlatform(true);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        trangtri1.setBackground(new java.awt.Color(0, 102, 255));
-
-        javax.swing.GroupLayout trangtri1Layout = new javax.swing.GroupLayout(trangtri1);
-        trangtri1.setLayout(trangtri1Layout);
-        trangtri1Layout.setHorizontalGroup(
-            trangtri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
-        );
-        trangtri1Layout.setVerticalGroup(
-            trangtri1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 91, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(trangtri1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, -1));
 
         jPanelHeader.setBackground(new java.awt.Color(255, 255, 255));
         jPanelHeader.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -156,22 +106,24 @@ public class Home extends javax.swing.JFrame {
         jPanelControlLayout.setHorizontalGroup(
             jPanelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelControlLayout.createSequentialGroup()
-                .addGap(0, 130, Short.MAX_VALUE)
-                .addComponent(btn_minimize, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 123, Short.MAX_VALUE)
+                .addComponent(btn_minimize)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_close, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4))
+                .addComponent(btn_close, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanelControlLayout.setVerticalGroup(
             jPanelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelControlLayout.createSequentialGroup()
-                .addGroup(jPanelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_close, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_minimize, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGroup(jPanelControlLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelControlLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(btn_close, javax.swing.GroupLayout.PREFERRED_SIZE, 22, Short.MAX_VALUE))
+                    .addComponent(btn_minimize, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        jPanelHeader.add(jPanelControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 0, 180, 40));
+        jPanelHeader.add(jPanelControl, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 0, 180, 30));
 
         trangchi2.setBackground(new java.awt.Color(0, 51, 204));
 
@@ -179,584 +131,140 @@ public class Home extends javax.swing.JFrame {
         trangchi2.setLayout(trangchi2Layout);
         trangchi2Layout.setHorizontalGroup(
             trangchi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGap(0, 1110, Short.MAX_VALUE)
         );
         trangchi2Layout.setVerticalGroup(
             trangchi2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 40, Short.MAX_VALUE)
+            .addGap(0, 30, Short.MAX_VALUE)
         );
 
-        jPanelHeader.add(trangchi2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 40));
+        jPanelHeader.add(trangchi2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 30));
 
-        getContentPane().add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1180, 40));
+        getContentPane().add(jPanelHeader, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        jPanelMenu.setBackground(new java.awt.Color(255, 255, 255));
-        jPanelMenu.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnTrangChu.setBackground(new java.awt.Color(255, 255, 255));
-        btnTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnTrangChuMouseClicked(evt);
-            }
-        });
-
-        IndicatorTC.setBackground(new java.awt.Color(204, 0, 204));
-        IndicatorTC.setOpaque(false);
-
-        javax.swing.GroupLayout IndicatorTCLayout = new javax.swing.GroupLayout(IndicatorTC);
-        IndicatorTC.setLayout(IndicatorTCLayout);
-        IndicatorTCLayout.setHorizontalGroup(
-            IndicatorTCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        IndicatorTCLayout.setVerticalGroup(
-            IndicatorTCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        trangChuLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        trangChuLabel.setForeground(new java.awt.Color(0, 51, 255));
-        trangChuLabel.setText("Trang chủ");
-
-        javax.swing.GroupLayout btnTrangChuLayout = new javax.swing.GroupLayout(btnTrangChu);
-        btnTrangChu.setLayout(btnTrangChuLayout);
-        btnTrangChuLayout.setHorizontalGroup(
-            btnTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnTrangChuLayout.createSequentialGroup()
-                .addComponent(IndicatorTC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(trangChuLabel)
-                .addGap(0, 117, Short.MAX_VALUE))
-        );
-        btnTrangChuLayout.setVerticalGroup(
-            btnTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IndicatorTC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnTrangChuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(trangChuLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanelMenu.add(btnTrangChu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 120, 232, -1));
-
-        btnQLSV.setBackground(new java.awt.Color(255, 255, 255));
-        btnQLSV.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnQLSVMouseClicked(evt);
-            }
-        });
-
-        IndicatorQLSV.setBackground(new java.awt.Color(204, 0, 204));
-        IndicatorQLSV.setOpaque(false);
-
-        javax.swing.GroupLayout IndicatorQLSVLayout = new javax.swing.GroupLayout(IndicatorQLSV);
-        IndicatorQLSV.setLayout(IndicatorQLSVLayout);
-        IndicatorQLSVLayout.setHorizontalGroup(
-            IndicatorQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        IndicatorQLSVLayout.setVerticalGroup(
-            IndicatorQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        QLSVLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        QLSVLabel.setForeground(new java.awt.Color(0, 0, 153));
-        QLSVLabel.setText("Quản lý sinh viên");
-
-        javax.swing.GroupLayout btnQLSVLayout = new javax.swing.GroupLayout(btnQLSV);
-        btnQLSV.setLayout(btnQLSVLayout);
-        btnQLSVLayout.setHorizontalGroup(
-            btnQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnQLSVLayout.createSequentialGroup()
-                .addComponent(IndicatorQLSV, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(QLSVLabel)
-                .addContainerGap(78, Short.MAX_VALUE))
-        );
-        btnQLSVLayout.setVerticalGroup(
-            btnQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IndicatorQLSV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnQLSVLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(QLSVLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanelMenu.add(btnQLSV, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 232, -1));
-
-        btnQLN.setBackground(new java.awt.Color(255, 255, 255));
-        btnQLN.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnQLNMouseClicked(evt);
-            }
-        });
-
-        IndicatorQLN.setBackground(new java.awt.Color(204, 0, 204));
-        IndicatorQLN.setOpaque(false);
-
-        javax.swing.GroupLayout IndicatorQLNLayout = new javax.swing.GroupLayout(IndicatorQLN);
-        IndicatorQLN.setLayout(IndicatorQLNLayout);
-        IndicatorQLNLayout.setHorizontalGroup(
-            IndicatorQLNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        IndicatorQLNLayout.setVerticalGroup(
-            IndicatorQLNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        QLNLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        QLNLabel.setForeground(new java.awt.Color(0, 0, 153));
-        QLNLabel.setText("Quản lý nhóm");
-
-        javax.swing.GroupLayout btnQLNLayout = new javax.swing.GroupLayout(btnQLN);
-        btnQLN.setLayout(btnQLNLayout);
-        btnQLNLayout.setHorizontalGroup(
-            btnQLNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnQLNLayout.createSequentialGroup()
-                .addComponent(IndicatorQLN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(QLNLabel)
-                .addGap(0, 95, Short.MAX_VALUE))
-        );
-        btnQLNLayout.setVerticalGroup(
-            btnQLNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IndicatorQLN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnQLNLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(QLNLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanelMenu.add(btnQLN, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 220, 232, 50));
-
-        btnQLTD.setBackground(new java.awt.Color(255, 255, 255));
-        btnQLTD.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnQLTDMouseClicked(evt);
-            }
-        });
-
-        IndicatorQLTD.setBackground(new java.awt.Color(204, 0, 204));
-        IndicatorQLTD.setOpaque(false);
-
-        javax.swing.GroupLayout IndicatorQLTDLayout = new javax.swing.GroupLayout(IndicatorQLTD);
-        IndicatorQLTD.setLayout(IndicatorQLTDLayout);
-        IndicatorQLTDLayout.setHorizontalGroup(
-            IndicatorQLTDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        IndicatorQLTDLayout.setVerticalGroup(
-            IndicatorQLTDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        QLTDLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        QLTDLabel.setForeground(new java.awt.Color(0, 0, 153));
-        QLTDLabel.setText("Quản lý tiến độ");
-
-        javax.swing.GroupLayout btnQLTDLayout = new javax.swing.GroupLayout(btnQLTD);
-        btnQLTD.setLayout(btnQLTDLayout);
-        btnQLTDLayout.setHorizontalGroup(
-            btnQLTDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnQLTDLayout.createSequentialGroup()
-                .addComponent(IndicatorQLTD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(QLTDLabel)
-                .addGap(0, 88, Short.MAX_VALUE))
-        );
-        btnQLTDLayout.setVerticalGroup(
-            btnQLTDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IndicatorQLTD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnQLTDLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(QLTDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanelMenu.add(btnQLTD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 270, 232, -1));
-
-        btnQLGD.setBackground(new java.awt.Color(255, 255, 255));
-        btnQLGD.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnQLGDMouseClicked(evt);
-            }
-        });
-
-        IndicatorQLGD.setBackground(new java.awt.Color(204, 0, 204));
-        IndicatorQLGD.setOpaque(false);
-
-        javax.swing.GroupLayout IndicatorQLGDLayout = new javax.swing.GroupLayout(IndicatorQLGD);
-        IndicatorQLGD.setLayout(IndicatorQLGDLayout);
-        IndicatorQLGDLayout.setHorizontalGroup(
-            IndicatorQLGDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        IndicatorQLGDLayout.setVerticalGroup(
-            IndicatorQLGDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        QLGDLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        QLGDLabel.setForeground(new java.awt.Color(0, 0, 153));
-        QLGDLabel.setText("Quản lý giai đoạn");
-
-        javax.swing.GroupLayout btnQLGDLayout = new javax.swing.GroupLayout(btnQLGD);
-        btnQLGD.setLayout(btnQLGDLayout);
-        btnQLGDLayout.setHorizontalGroup(
-            btnQLGDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnQLGDLayout.createSequentialGroup()
-                .addComponent(IndicatorQLGD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(QLGDLabel)
-                .addGap(0, 76, Short.MAX_VALUE))
-        );
-        btnQLGDLayout.setVerticalGroup(
-            btnQLGDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IndicatorQLGD, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnQLGDLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(QLGDLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanelMenu.add(btnQLGD, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 320, 232, -1));
-
-        btnQLDT.setBackground(new java.awt.Color(255, 255, 255));
-        btnQLDT.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnQLDTMouseClicked(evt);
-            }
-        });
-
-        IndicatorQLDT.setBackground(new java.awt.Color(204, 0, 204));
-        IndicatorQLDT.setOpaque(false);
-
-        javax.swing.GroupLayout IndicatorQLDTLayout = new javax.swing.GroupLayout(IndicatorQLDT);
-        IndicatorQLDT.setLayout(IndicatorQLDTLayout);
-        IndicatorQLDTLayout.setHorizontalGroup(
-            IndicatorQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        IndicatorQLDTLayout.setVerticalGroup(
-            IndicatorQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        QLDTLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        QLDTLabel.setForeground(new java.awt.Color(0, 0, 153));
-        QLDTLabel.setText("Quản lý đề tài");
-
-        javax.swing.GroupLayout btnQLDTLayout = new javax.swing.GroupLayout(btnQLDT);
-        btnQLDT.setLayout(btnQLDTLayout);
-        btnQLDTLayout.setHorizontalGroup(
-            btnQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnQLDTLayout.createSequentialGroup()
-                .addComponent(IndicatorQLDT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(QLDTLabel)
-                .addGap(0, 96, Short.MAX_VALUE))
-        );
-        btnQLDTLayout.setVerticalGroup(
-            btnQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IndicatorQLDT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnQLDTLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(QLDTLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanelMenu.add(btnQLDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 370, 232, -1));
-
-        btnQLTK.setBackground(new java.awt.Color(255, 255, 255));
-        btnQLTK.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnQLTKMouseClicked(evt);
-            }
-        });
-
-        IndicatorQLTK.setBackground(new java.awt.Color(204, 0, 204));
-        IndicatorQLTK.setOpaque(false);
-
-        javax.swing.GroupLayout IndicatorQLTKLayout = new javax.swing.GroupLayout(IndicatorQLTK);
-        IndicatorQLTK.setLayout(IndicatorQLTKLayout);
-        IndicatorQLTKLayout.setHorizontalGroup(
-            IndicatorQLTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        IndicatorQLTKLayout.setVerticalGroup(
-            IndicatorQLTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        QLTKLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        QLTKLabel.setForeground(new java.awt.Color(0, 0, 153));
-        QLTKLabel.setText("Quản lý tài khoản");
-
-        javax.swing.GroupLayout btnQLTKLayout = new javax.swing.GroupLayout(btnQLTK);
-        btnQLTK.setLayout(btnQLTKLayout);
-        btnQLTKLayout.setHorizontalGroup(
-            btnQLTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnQLTKLayout.createSequentialGroup()
-                .addComponent(IndicatorQLTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(QLTKLabel)
-                .addGap(0, 75, Short.MAX_VALUE))
-        );
-        btnQLTKLayout.setVerticalGroup(
-            btnQLTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IndicatorQLTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnQLTKLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(QLTKLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanelMenu.add(btnQLTK, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, 232, -1));
-
-        btnBaoCao.setBackground(new java.awt.Color(255, 255, 255));
-        btnBaoCao.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnBaoCaoMouseClicked(evt);
-            }
-        });
-
-        IndicatorBC.setBackground(new java.awt.Color(204, 0, 204));
-        IndicatorBC.setOpaque(false);
-
-        javax.swing.GroupLayout IndicatorBCLayout = new javax.swing.GroupLayout(IndicatorBC);
-        IndicatorBC.setLayout(IndicatorBCLayout);
-        IndicatorBCLayout.setHorizontalGroup(
-            IndicatorBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 8, Short.MAX_VALUE)
-        );
-        IndicatorBCLayout.setVerticalGroup(
-            IndicatorBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        baoCaoLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        baoCaoLabel.setForeground(new java.awt.Color(0, 0, 153));
-        baoCaoLabel.setText("Báo cáo");
-
-        javax.swing.GroupLayout btnBaoCaoLayout = new javax.swing.GroupLayout(btnBaoCao);
-        btnBaoCao.setLayout(btnBaoCaoLayout);
-        btnBaoCaoLayout.setHorizontalGroup(
-            btnBaoCaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(btnBaoCaoLayout.createSequentialGroup()
-                .addComponent(IndicatorBC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(baoCaoLabel)
-                .addGap(0, 129, Short.MAX_VALUE))
-        );
-        btnBaoCaoLayout.setVerticalGroup(
-            btnBaoCaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(IndicatorBC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, btnBaoCaoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(baoCaoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 24, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanelMenu.add(btnBaoCao, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 470, 232, -1));
+        menuPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         avatar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/fallon.png"))); // NOI18N
-        jPanelMenu.add(avatar, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 0, -1, -1));
 
-        jSplitPane2.setLeftComponent(jPanelMenu);
-
-        panelCards.setLayout(new java.awt.CardLayout());
-
-        javax.swing.GroupLayout pnlTrangChuLayout = new javax.swing.GroupLayout(pnlTrangChu);
-        pnlTrangChu.setLayout(pnlTrangChuLayout);
-        pnlTrangChuLayout.setHorizontalGroup(
-            pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 941, Short.MAX_VALUE)
-        );
-        pnlTrangChuLayout.setVerticalGroup(
-            pnlTrangChuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
-        );
-
-        panelCards.add(pnlTrangChu, "card2");
-
-        pnlQLSV.setBackground(new java.awt.Color(255, 255, 255));
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        btnTrangChu.setBackground(new java.awt.Color(0, 51, 204));
+        btnTrangChu.setForeground(new java.awt.Color(255, 255, 255));
+        btnTrangChu.setText("Trang chủ");
+        btnTrangChu.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        btnTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                btnTrangChuMousePressed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        });
 
-        jComboBoxTimKiem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        btnQLSV.setBackground(new java.awt.Color(0, 51, 204));
+        btnQLSV.setForeground(new java.awt.Color(255, 255, 255));
+        btnQLSV.setText("Quản lý sinh viên");
+        btnQLSV.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        btnQLSV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnQLSVActionPerformed(evt);
+            }
+        });
 
-        btnTimKiem.setText("Tìm kiếm");
+        btnQLN.setBackground(new java.awt.Color(0, 51, 204));
+        btnQLN.setForeground(new java.awt.Color(255, 255, 255));
+        btnQLN.setText("Quản lý nhóm");
+        btnQLN.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        sinhVienLabel.setText("Mã sinh viên");
+        btnQLDT.setBackground(new java.awt.Color(0, 51, 204));
+        btnQLDT.setForeground(new java.awt.Color(255, 255, 255));
+        btnQLDT.setText("Quản lý đề tài");
+        btnQLDT.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        tenSinhVienLabel.setText("Tên sinh viên");
+        btnQLTD.setBackground(new java.awt.Color(0, 51, 204));
+        btnQLTD.setForeground(new java.awt.Color(255, 255, 255));
+        btnQLTD.setText("Quản lý tiến độ");
+        btnQLTD.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jButton1.setText("Thêm");
+        btnQLGD.setBackground(new java.awt.Color(0, 51, 204));
+        btnQLGD.setForeground(new java.awt.Color(255, 255, 255));
+        btnQLGD.setText("Quản lý giai đoạn");
+        btnQLGD.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        jButton2.setText("Xoá");
+        bvtnTK.setBackground(new java.awt.Color(0, 51, 204));
+        bvtnTK.setForeground(new java.awt.Color(255, 255, 255));
+        bvtnTK.setText("Tài khoản");
+        bvtnTK.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        javax.swing.GroupLayout pnlQLSVLayout = new javax.swing.GroupLayout(pnlQLSV);
-        pnlQLSV.setLayout(pnlQLSVLayout);
-        pnlQLSVLayout.setHorizontalGroup(
-            pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlQLSVLayout.createSequentialGroup()
-                .addGroup(pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlQLSVLayout.createSequentialGroup()
-                        .addGap(30, 30, 30)
-                        .addGroup(pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 875, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnlQLSVLayout.createSequentialGroup()
-                                .addComponent(jComboBoxTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnTimKiem))))
-                    .addGroup(pnlQLSVLayout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addGroup(pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tenSinhVienLabel)
-                            .addComponent(sinhVienLabel))
-                        .addGap(41, 41, 41)
-                        .addGroup(pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(jTextField3))
-                        .addGap(18, 18, 18)
-                        .addGroup(pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+        btnBaoCao.setBackground(new java.awt.Color(0, 51, 204));
+        btnBaoCao.setForeground(new java.awt.Color(255, 255, 255));
+        btnBaoCao.setText("Báo cáo");
+        btnBaoCao.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        javax.swing.GroupLayout menuPanelLayout = new javax.swing.GroupLayout(menuPanel);
+        menuPanel.setLayout(menuPanelLayout);
+        menuPanelLayout.setHorizontalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(btnTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGroup(menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnQLSV, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQLN, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQLTD, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQLGD, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnQLDT, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bvtnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBaoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(avatar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        pnlQLSVLayout.setVerticalGroup(
-            pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlQLSVLayout.createSequentialGroup()
+        menuPanelLayout.setVerticalGroup(
+            menuPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(menuPanelLayout.createSequentialGroup()
+                .addGap(49, 49, 49)
+                .addComponent(avatar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(btnTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQLSV, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQLN, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQLTD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQLGD, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnQLDT, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bvtnTK, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnBaoCao, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70))
+        );
+
+        menuPanelLayout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {btnBaoCao, btnQLDT, btnQLGD, btnQLN, btnQLSV, btnQLTD, btnTrangChu, bvtnTK});
+
+        getContentPane().add(menuPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 32, -1, 660));
+
+        MainPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jToolBar1.setRollover(true);
+
+        javax.swing.GroupLayout MainPanelLayout = new javax.swing.GroupLayout(MainPanel);
+        MainPanel.setLayout(MainPanelLayout);
+        MainPanelLayout.setHorizontalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MainPanelLayout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 990, Short.MAX_VALUE))
+        );
+        MainPanelLayout.setVerticalGroup(
+            MainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBoxTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnTimKiem))
-                .addGap(38, 38, 38)
-                .addGroup(pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(sinhVienLabel)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addGroup(pnlQLSVLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tenSinhVienLabel)
-                    .addComponent(jButton2))
-                .addGap(57, 57, 57)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(195, Short.MAX_VALUE))
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(624, Short.MAX_VALUE))
         );
 
-        panelCards.add(pnlQLSV, "card3");
-
-        pnlQLN.setBackground(new java.awt.Color(255, 0, 102));
-
-        javax.swing.GroupLayout pnlQLNLayout = new javax.swing.GroupLayout(pnlQLN);
-        pnlQLN.setLayout(pnlQLNLayout);
-        pnlQLNLayout.setHorizontalGroup(
-            pnlQLNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlQLNLayout.setVerticalGroup(
-            pnlQLNLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
-        );
-
-        panelCards.add(pnlQLN, "card4");
-
-        pnlQLTD.setBackground(new java.awt.Color(0, 0, 0));
-
-        javax.swing.GroupLayout pnlQLTDLayout = new javax.swing.GroupLayout(pnlQLTD);
-        pnlQLTD.setLayout(pnlQLTDLayout);
-        pnlQLTDLayout.setHorizontalGroup(
-            pnlQLTDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlQLTDLayout.setVerticalGroup(
-            pnlQLTDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
-        );
-
-        panelCards.add(pnlQLTD, "card5");
-
-        pnlQLGD.setBackground(new java.awt.Color(204, 0, 0));
-
-        javax.swing.GroupLayout pnlQLGDLayout = new javax.swing.GroupLayout(pnlQLGD);
-        pnlQLGD.setLayout(pnlQLGDLayout);
-        pnlQLGDLayout.setHorizontalGroup(
-            pnlQLGDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlQLGDLayout.setVerticalGroup(
-            pnlQLGDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
-        );
-
-        panelCards.add(pnlQLGD, "card6");
-
-        pnlQLDT.setBackground(new java.awt.Color(51, 153, 0));
-
-        javax.swing.GroupLayout pnlQLDTLayout = new javax.swing.GroupLayout(pnlQLDT);
-        pnlQLDT.setLayout(pnlQLDTLayout);
-        pnlQLDTLayout.setHorizontalGroup(
-            pnlQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlQLDTLayout.setVerticalGroup(
-            pnlQLDTLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
-        );
-
-        panelCards.add(pnlQLDT, "card7");
-
-        pnlQLTK.setBackground(new java.awt.Color(0, 102, 102));
-
-        javax.swing.GroupLayout pnlQLTKLayout = new javax.swing.GroupLayout(pnlQLTK);
-        pnlQLTK.setLayout(pnlQLTKLayout);
-        pnlQLTKLayout.setHorizontalGroup(
-            pnlQLTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlQLTKLayout.setVerticalGroup(
-            pnlQLTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
-        );
-
-        panelCards.add(pnlQLTK, "card8");
-
-        pnlBC.setBackground(new java.awt.Color(153, 153, 255));
-
-        javax.swing.GroupLayout pnlBCLayout = new javax.swing.GroupLayout(pnlBC);
-        pnlBC.setLayout(pnlBCLayout);
-        pnlBCLayout.setHorizontalGroup(
-            pnlBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        pnlBCLayout.setVerticalGroup(
-            pnlBCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 598, Short.MAX_VALUE)
-        );
-
-        panelCards.add(pnlBC, "card9");
-
-        jSplitPane2.setRightComponent(panelCards);
-
-        getContentPane().add(jSplitPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 1180, 600));
+        getContentPane().add(MainPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 32, 1090, 660));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -769,256 +277,52 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_closeMouseClicked
 
+    private void btn_minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_minimizeMouseClicked
+        // TODO add your handling code here:
+        this.setState(JFrame.ICONIFIED);
+    }//GEN-LAST:event_btn_minimizeMouseClicked
+
+    private void jPanelHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMouseDragged
+        // TODO add your handling code here:
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        
+        this.setLocation(x-xMouse,y-yMouse);
+    }//GEN-LAST:event_jPanelHeaderMouseDragged
+
     private void jPanelHeaderMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMousePressed
         // TODO add your handling code here:
         xMouse = evt.getX();
         yMouse = evt.getY();
     }//GEN-LAST:event_jPanelHeaderMousePressed
 
-    private void jPanelHeaderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanelHeaderMouseDragged
+    private void btnQLSVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQLSVActionPerformed
         // TODO add your handling code here:
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x-xMouse,y-yMouse);
-    }//GEN-LAST:event_jPanelHeaderMouseDragged
+        if(indexTab!=1)
+        {
+            indexTab=1;     
+            MainPanel.removeAll();
+            MainPanel.setLayout(new BorderLayout());
+            MainPanel.add(tab1);
+            MainPanel.revalidate();
+            MainPanel.repaint();
+        }
 
-    private void btn_minimizeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_minimizeMouseClicked
+    }//GEN-LAST:event_btnQLSVActionPerformed
+
+    private void btnTrangChuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangChuMousePressed
         // TODO add your handling code here:
-        this.setState(JFrame.ICONIFIED);
-    }//GEN-LAST:event_btn_minimizeMouseClicked
+         if(indexTab!=1)
+        {
+            indexTab=1;     
+            MainPanel.removeAll();
+            MainPanel.setLayout(new BorderLayout());
+            MainPanel.add(tab1);
+            MainPanel.revalidate();
+            MainPanel.repaint();
+        }
+    }//GEN-LAST:event_btnTrangChuMousePressed
 
-    private void btnTrangChuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangChuMouseClicked
-        // TODO add your handling code here:
-        onClick(btnTrangChu);
-        onLeaveClick(btnQLSV);
-        onLeaveClick(btnQLN);
-        onLeaveClick(btnQLTD);
-        onLeaveClick(btnQLGD);
-        onLeaveClick(btnQLDT);
-        onLeaveClick(btnQLTK);
-        onLeaveClick(btnBaoCao);
-
-        //indicators
-        IndicatorTC.setOpaque(true);
-        IndicatorQLSV.setOpaque(false);
-        IndicatorQLN.setOpaque(false);
-        IndicatorQLTD.setOpaque(false);
-        IndicatorQLGD.setOpaque(false);
-        IndicatorQLDT.setOpaque(false);
-        IndicatorQLTK.setOpaque(false);
-        IndicatorBC.setOpaque(false);
-        
-        //show layout
-        panelCards.removeAll();
-        panelCards.add(pnlTrangChu);
-        panelCards.repaint();
-        panelCards.revalidate();
-    }//GEN-LAST:event_btnTrangChuMouseClicked
-
-    private void btnQLSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLSVMouseClicked
-        // TODO add your handling code here:
-        onClick(btnQLSV);
-        onLeaveClick(btnTrangChu);
-        onLeaveClick(btnQLN);
-        onLeaveClick(btnQLTD);
-        onLeaveClick(btnQLGD);
-        onLeaveClick(btnQLDT);
-        onLeaveClick(btnQLTK);
-        onLeaveClick(btnBaoCao);
-
-        //indicators
-        IndicatorTC.setOpaque(false);
-        IndicatorQLSV.setOpaque(true);
-        IndicatorQLN.setOpaque(false);
-        IndicatorQLTD.setOpaque(false);
-        IndicatorQLGD.setOpaque(false);
-        IndicatorQLDT.setOpaque(false);
-        IndicatorQLTK.setOpaque(false);
-        IndicatorBC.setOpaque(false);
-        
-        //show layout
-        panelCards.removeAll();
-        panelCards.add(pnlQLSV);
-        panelCards.repaint();
-        panelCards.revalidate();
-    }//GEN-LAST:event_btnQLSVMouseClicked
-
-    private void btnQLNMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLNMouseClicked
-        // TODO add your handling code here:
-        onClick(btnQLN);
-        onLeaveClick(btnTrangChu);
-        onLeaveClick(btnQLSV);
-        onLeaveClick(btnQLTD);
-        onLeaveClick(btnQLGD);
-        onLeaveClick(btnQLDT);
-        onLeaveClick(btnQLTK);
-        onLeaveClick(btnBaoCao);
-
-        //indicators
-        IndicatorTC.setOpaque(false);
-        IndicatorQLSV.setOpaque(false);
-        IndicatorQLN.setOpaque(true);
-        IndicatorQLTD.setOpaque(false);
-        IndicatorQLGD.setOpaque(false);
-        IndicatorQLDT.setOpaque(false);
-        IndicatorQLTK.setOpaque(false);
-        IndicatorBC.setOpaque(false);
-        
-        //show layout
-        panelCards.removeAll();
-        panelCards.add(pnlQLN);
-        panelCards.repaint();
-        panelCards.revalidate();
-    }//GEN-LAST:event_btnQLNMouseClicked
-
-    private void btnQLTDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLTDMouseClicked
-        // TODO add your handling code here:
-        onClick(btnQLTD);
-        onLeaveClick(btnTrangChu);
-        onLeaveClick(btnQLSV);
-        onLeaveClick(btnQLN);
-        onLeaveClick(btnQLGD);
-        onLeaveClick(btnQLDT);
-        onLeaveClick(btnQLTK);
-        onLeaveClick(btnBaoCao);
-
-        //indicators
-        IndicatorTC.setOpaque(false);
-        IndicatorQLSV.setOpaque(false);
-        IndicatorQLN.setOpaque(false);
-        IndicatorQLTD.setOpaque(true);
-        IndicatorQLGD.setOpaque(false);
-        IndicatorQLDT.setOpaque(false);
-        IndicatorQLTK.setOpaque(false);
-        IndicatorBC.setOpaque(false);
-        
-        //show layout
-        panelCards.removeAll();
-        panelCards.add(pnlQLTD);
-        panelCards.repaint();
-        panelCards.revalidate();
-    }//GEN-LAST:event_btnQLTDMouseClicked
-
-    private void btnQLGDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLGDMouseClicked
-        // TODO add your handling code here:
-        onClick(btnQLGD);
-        onLeaveClick(btnTrangChu);
-        onLeaveClick(btnQLSV);
-        onLeaveClick(btnQLN);
-        onLeaveClick(btnQLTD);
-        onLeaveClick(btnQLDT);
-        onLeaveClick(btnQLTK);
-        onLeaveClick(btnBaoCao);
-
-        //indicators
-        IndicatorTC.setOpaque(false);
-        IndicatorQLSV.setOpaque(false);
-        IndicatorQLN.setOpaque(false);
-        IndicatorQLTD.setOpaque(false);
-        IndicatorQLGD.setOpaque(true);
-        IndicatorQLDT.setOpaque(false);
-        IndicatorQLTK.setOpaque(false);
-        IndicatorBC.setOpaque(false);
-        
-        //show layout
-        panelCards.removeAll();
-        panelCards.add(pnlQLGD);
-        panelCards.repaint();
-        panelCards.revalidate();
-    }//GEN-LAST:event_btnQLGDMouseClicked
-
-    private void btnQLDTMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLDTMouseClicked
-        // TODO add your handling code here:
-        onClick(btnQLDT);
-        onLeaveClick(btnTrangChu);
-        onLeaveClick(btnQLSV);
-        onLeaveClick(btnQLN);
-        onLeaveClick(btnQLTD);
-        onLeaveClick(btnQLGD);
-        onLeaveClick(btnQLTK);
-        onLeaveClick(btnBaoCao);
-
-        //indicators
-        IndicatorTC.setOpaque(false);
-        IndicatorQLSV.setOpaque(false);
-        IndicatorQLN.setOpaque(false);
-        IndicatorQLTD.setOpaque(false);
-        IndicatorQLGD.setOpaque(false);
-        IndicatorQLDT.setOpaque(true);
-        IndicatorQLTK.setOpaque(false);
-        IndicatorBC.setOpaque(false);
-        
-        //show layout
-        panelCards.removeAll();
-        panelCards.add(pnlQLDT);
-        panelCards.repaint();
-        panelCards.revalidate();
-    }//GEN-LAST:event_btnQLDTMouseClicked
-
-    private void btnQLTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQLTKMouseClicked
-        // TODO add your handling code here:
-        onClick(btnQLTK);
-        onLeaveClick(btnTrangChu);
-        onLeaveClick(btnQLSV);
-        onLeaveClick(btnQLN);
-        onLeaveClick(btnQLTD);
-        onLeaveClick(btnQLGD);
-        onLeaveClick(btnQLDT);
-        onLeaveClick(btnBaoCao);
-        //indicators
-        IndicatorTC.setOpaque(false);
-        IndicatorQLSV.setOpaque(false);
-        IndicatorQLN.setOpaque(false);
-        IndicatorQLTD.setOpaque(false);
-        IndicatorQLGD.setOpaque(false);
-        IndicatorQLDT.setOpaque(false);
-        IndicatorQLTK.setOpaque(true);
-        IndicatorBC.setOpaque(false);
-        
-        //show layout
-        panelCards.removeAll();
-        panelCards.add(pnlQLTK);
-        panelCards.repaint();
-        panelCards.revalidate();
-    }//GEN-LAST:event_btnQLTKMouseClicked
-
-    private void btnBaoCaoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBaoCaoMouseClicked
-        // TODO add your handling code here:
-        onClick(btnBaoCao);
-        onLeaveClick(btnTrangChu);
-        onLeaveClick(btnQLSV);
-        onLeaveClick(btnQLN);
-        onLeaveClick(btnQLTD);
-        onLeaveClick(btnQLGD);
-        onLeaveClick(btnQLDT);
-        onLeaveClick(btnQLTK);
-        //indicators
-        IndicatorTC.setOpaque(false);
-        IndicatorQLSV.setOpaque(false);
-        IndicatorQLN.setOpaque(false);
-        IndicatorQLTD.setOpaque(false);
-        IndicatorQLGD.setOpaque(false);
-        IndicatorQLDT.setOpaque(false);
-        IndicatorQLTK.setOpaque(false);
-        IndicatorBC.setOpaque(true);
-        
-        //show layout
-        panelCards.removeAll();
-        panelCards.add(pnlBC);
-        panelCards.repaint();
-        panelCards.revalidate();
-    }//GEN-LAST:event_btnBaoCaoMouseClicked
-    //bad idea
-    private void onClick(JPanel panel)
-    {
-        panel.setBackground(new Color(12, 212, 240));
-    }
-    
-     private void onLeaveClick(JPanel panel)
-    {
-        panel.setBackground(Color.white);
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -1030,7 +334,7 @@ public class Home extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -1045,7 +349,6 @@ public class Home extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -1056,58 +359,22 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel IndicatorBC;
-    private javax.swing.JPanel IndicatorQLDT;
-    private javax.swing.JPanel IndicatorQLGD;
-    private javax.swing.JPanel IndicatorQLN;
-    private javax.swing.JPanel IndicatorQLSV;
-    private javax.swing.JPanel IndicatorQLTD;
-    private javax.swing.JPanel IndicatorQLTK;
-    private javax.swing.JPanel IndicatorTC;
-    private javax.swing.JLabel QLDTLabel;
-    private javax.swing.JLabel QLGDLabel;
-    private javax.swing.JLabel QLNLabel;
-    private javax.swing.JLabel QLSVLabel;
-    private javax.swing.JLabel QLTDLabel;
-    private javax.swing.JLabel QLTKLabel;
+    private javax.swing.JPanel MainPanel;
     private javax.swing.JLabel avatar;
-    private javax.swing.JLabel baoCaoLabel;
-    private javax.swing.JPanel btnBaoCao;
-    private javax.swing.JPanel btnQLDT;
-    private javax.swing.JPanel btnQLGD;
-    private javax.swing.JPanel btnQLN;
-    private javax.swing.JPanel btnQLSV;
-    private javax.swing.JPanel btnQLTD;
-    private javax.swing.JPanel btnQLTK;
-    private javax.swing.JButton btnTimKiem;
-    private javax.swing.JPanel btnTrangChu;
+    private javax.swing.JButton btnBaoCao;
+    private javax.swing.JButton btnQLDT;
+    private javax.swing.JButton btnQLGD;
+    private javax.swing.JButton btnQLN;
+    private javax.swing.JButton btnQLSV;
+    private javax.swing.JButton btnQLTD;
+    private javax.swing.JButton btnTrangChu;
     private javax.swing.JLabel btn_close;
     private javax.swing.JLabel btn_minimize;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBoxTimKiem;
+    private javax.swing.JButton bvtnTK;
     private javax.swing.JPanel jPanelControl;
     private javax.swing.JPanel jPanelHeader;
-    private javax.swing.JPanel jPanelMenu;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSplitPane jSplitPane2;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextTimKiem;
-    private javax.swing.JPanel panelCards;
-    private javax.swing.JPanel pnlBC;
-    private javax.swing.JPanel pnlQLDT;
-    private javax.swing.JPanel pnlQLGD;
-    private javax.swing.JPanel pnlQLN;
-    private javax.swing.JPanel pnlQLSV;
-    private javax.swing.JPanel pnlQLTD;
-    private javax.swing.JPanel pnlQLTK;
-    private javax.swing.JPanel pnlTrangChu;
-    private javax.swing.JLabel sinhVienLabel;
-    private javax.swing.JLabel tenSinhVienLabel;
-    private javax.swing.JLabel trangChuLabel;
+    private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JPanel menuPanel;
     private javax.swing.JPanel trangchi2;
-    private javax.swing.JPanel trangtri1;
     // End of variables declaration//GEN-END:variables
 }

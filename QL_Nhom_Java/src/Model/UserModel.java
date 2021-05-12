@@ -11,18 +11,25 @@ package Model;
  */
 public class UserModel {
     private int id;
-    private String Username;
-    private String Password;
-    private String Name;
+    private String userName;
+    private String password;
+    private String name;
 
     public UserModel() {
     }
 
-    public UserModel(int id, String Username, String Password, String name) {
+    public UserModel(int id, String userName, String password, String name) {
         this.id = id;
-        this.Username = Username;
-        this.Password = Password;
-        this.Name = name;
+        this.userName = userName;
+        this.password = password;
+        this.name = name;
+    }
+
+    public UserModel(UserModel user) {
+        this.id = user.id;
+        this.userName = user.userName;
+        this.password = user.password;
+        this.name = user.name;
     }
 
     public int getId() {
@@ -34,27 +41,27 @@ public class UserModel {
     }
 
     public String getUsername() {
-        return Username;
+        return userName;
     }
 
     public void setUsername(String Username) {
-        this.Username = Username;
+        this.userName = Username;
     }
 
     public String getPassword() {
-        return Password;
+        return password;
     }
 
     public void setPassword(String Password) {
-        this.Password = Password;
+        this.password = Password;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String Name) {
-        this.Name = Name;
+        this.name = Name;
     }
     
 }

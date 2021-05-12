@@ -282,28 +282,16 @@ public class Login_Form extends javax.swing.JFrame {
     }//GEN-LAST:event_signInMouseEntered
 
     private void signInMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_signInMouseClicked
-           if(jUserField.getText().equals("")||jUserField.getText().equals("Nhập tài khoản..."))
-           {
-               
-           }
-           else
-           {
+
                User userDAO = new User();
                UserModel user = userDAO.loginAccount(jUserField.getText(), String.valueOf(jPasswordField.getPassword()));
-               if(user == null)
-               {
-                   
-               }
-               else
-               {
+
                    Home h = new Home(user);
                    h.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
                    h.setLocationRelativeTo(null);
                    h.setResizable(false);
                    h.setVisible(true);
                    this.dispose();
-               }
-           }
     }//GEN-LAST:event_signInMouseClicked
 
     /**

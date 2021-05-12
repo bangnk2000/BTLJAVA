@@ -182,5 +182,4 @@ public class Common<T> implements ICommon<T>{
         }catch (SQLException ex){
         }
     }
-    
 }
